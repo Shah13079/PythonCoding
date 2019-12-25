@@ -1,0 +1,72 @@
+''' Author: Shah hussain
+    purpose: for Lab 11
+    Date: 25 december 2019 '''
+    
+class Node:
+    def __init__(self,data):
+        self.next=None
+        self.data=data
+        
+class Linkedlist:
+    def __init__(self):
+        self.start=None
+        
+    def Enqueue(self,data):
+        newNode=Node(data)
+        
+        if self.start==None:
+            self.start=newNode
+        else:
+            temp=self.start
+            self.start=newNode
+            newNode.next=temp
+            
+    def Dequeue(self):
+        if self.start==None:
+            print("|Linked list is empy|")
+        else:
+            i=0
+            index=self.start
+            while index.next != None: #This step is only give the total 
+                index=index.next      #number of items in queue
+                i+=1
+            temp=self.start
+            for j in range(i-1):
+                temp=temp.next
+            copy=temp.data #return data which is deleted
+            temp.next=None
+            return copy
+
+    def display(self):
+        if self.start is None:
+            print("Linked list is empty")
+        else:
+            temp=self.start
+            while temp!= None:
+                print(temp.data)
+                temp=temp.next
+                
+    def IsEmpty(self):
+        if self.start== None:
+            return "Queue is Empty"
+        else:
+            return "Queue is not empty"
+        
+    
+a=Linkedlist()
+a.Enqueue(1)
+a.Enqueue(7)
+a.Enqueue(5)
+a.Enqueue(2)
+print("Display Elments after enqueue require data:")
+a.display(),print()
+
+print("Delete two data element at the front of the stack and display all the data elements:")
+print(a.Dequeue(), "Is deleted")      #Here i dislpay the return data which is deleted
+print(a.Dequeue(), "Is deleted"),print()
+a.display(),print()
+
+print("Insert a new data element 9 and display all the data elements:")
+a.Enqueue(9) #Inserting 9
+a.display()
+
