@@ -46,9 +46,9 @@ class MydataSpider(CrawlSpider):
         name = items[1]
         time = items[2]
         article = items[3]
-        if not os.path.exists("scrapdata"+'/'+month):
-            os.makedirs("scrapdata"+'/'+month)
-        with open("scrapdata"+'/'+month+'/'+name+'.txt', 'a', encoding='utf-8',newline='') as file:
+        if not os.path.exists(month):
+            os.makedirs(month)
+        with open(month+'/'+name+'.txt', 'a', encoding='utf-8',newline='') as file:
             csvF = csv.writer(file)
             csvF.writerow([name+'\n\n',time+'\n\n\n',article,''])
             
